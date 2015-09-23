@@ -87,7 +87,7 @@ public class MyActivity extends Activity implements View.OnClickListener {
             }
         });
 
-/*        //equals listener
+        //equals listener
         buttonEquals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,7 +99,7 @@ public class MyActivity extends Activity implements View.OnClickListener {
                 text = Integer.toString(x);
                 textView.setText(text);
             }
-        }); */
+        });
     }
 
     @Override
