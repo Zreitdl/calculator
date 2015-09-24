@@ -15,7 +15,7 @@ public class CheckedParser implements Parser {
 
     private int brackets;
 
-    public Actions parse(String s) throws Except {
+    public Actions parse(String s) throws MyException {
         place = -1;
         a = s.trim();
         a += ' ';
@@ -25,12 +25,12 @@ public class CheckedParser implements Parser {
         nextlexem();
         answer = low();
         if (brackets != 0)
-            throw new Except("wrong parenthesis");
+            throw new MyException("wrong parenthesis");
         return answer;
 
     }
 
-    private void nextlexem() throws Except {
+    private void nextlexem() throws MyException {
         place++;
         if (place >= a.length()) {
             curlex = Lexem.End;
@@ -49,7 +49,7 @@ public class CheckedParser implements Parser {
                 curlex = Lexem.Close;
                 brackets--;
                 if (brackets < 0)
-                    throw new Except("wrong parenthesis");
+                    throw new MyException("wrong parenthesis");
                 break;
             case '+':
                 curlex = Lexem.Plus;
@@ -144,15 +144,15 @@ public class CheckedParser implements Parser {
                 curlex = Lexem.VarZ;
                 break;
             default:
-                throw new Except("wrong symbol");
+                throw new MyException("wrong symbol");
         }
     }
 
-    private Actions low() throws Except {
+    private Actions low() throws MyException {
 
         Actions a = expr();
         if (a == null)
-            throw new Except("wrong arguments");
+            throw new MyException("wrong arguments");
         while (curlex == Lexem.Left || curlex == Lexem.Right) {
             Lexem t = curlex;
             nextlexem();
@@ -166,11 +166,11 @@ public class CheckedParser implements Parser {
         return a;
     }
 
-    private Actions expr() throws Except {
+    private Actions expr() throws MyException {
 
         Actions a = item();
         if (a == null) {
-            throw new Except("wrong arguments");
+            throw new MyException("wrong arguments");
         }
         while (curlex == Lexem.Plus || curlex == Lexem.Minus) {
             Lexem t = curlex;
@@ -186,10 +186,10 @@ public class CheckedParser implements Parser {
 
     }
 
-    private Actions item() throws Except {
+    private Actions item() throws MyException {
         Actions a = high();
         if (a == null) {
-            throw new Except("wrong arguments");
+            throw new MyException("wrong arguments");
         }
         while (curlex == Lexem.Mul || curlex == Lexem.Div || curlex == Lexem.Mod) {
             Lexem t = curlex;
@@ -207,10 +207,10 @@ public class CheckedParser implements Parser {
         return a;
     }
 
-    private Actions high() throws Except {
+    private Actions high() throws MyException {
         Actions a = mult();
         if (a == null) {
-            throw new Except("wrong arguments");
+            throw new MyException("wrong arguments");
         }
         while (curlex == Lexem.Pow || curlex == Lexem.Log) {
             Lexem t = curlex;
@@ -225,7 +225,7 @@ public class CheckedParser implements Parser {
         return a;
     }
 
-    private Actions mult() throws Except {
+    private Actions mult() throws MyException {
         Actions answer;
         switch (curlex) {
             case UnMinus:
@@ -236,7 +236,7 @@ public class CheckedParser implements Parser {
                 try {
                     answer = new Const(Integer.parseInt(number));
                 } catch (NumberFormatException e) {
-                    throw new Except("overflow");
+                    throw new MyException("overflow");
                 }
                 nextlexem();
                 break;
@@ -270,17 +270,17 @@ public class CheckedParser implements Parser {
                 if (curlex == Lexem.Close) {
                     nextlexem();
                 } else
-                    throw new Except("wrong parenthesis");
+                    throw new MyException("wrong parenthesis");
                 break;
             default:
-                throw new Except("wrong arguments");
+                throw new MyException("wrong arguments");
 
 
         }
         return answer;
     }
 
-    private String findNumber() throws Except {
+    private String findNumber() throws MyException {
         String answer = "";
         while (place < a.length() && Character.isDigit(a.charAt(place))) {
             answer += a.charAt(place);

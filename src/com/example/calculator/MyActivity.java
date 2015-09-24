@@ -1,10 +1,15 @@
 package com.example.calculator;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.io.IOException;
 
 public class MyActivity extends Activity implements View.OnClickListener {
     public static String expr = "";
@@ -93,10 +98,36 @@ public class MyActivity extends Activity implements View.OnClickListener {
             public void onClick(View v) {
                 TextView textView = (TextView)findViewById(R.id.textView);
                 String text = (String)textView.getText();
-                ExpressionParser parser = new ExpressionParser();
-                Actions result = parser.parse(text);
-                int x = result.evaluate(0);
-                text = Integer.toString(x);
+                CheckedParser parser = new CheckedParser();
+                try {
+                    Actions result = parser.parse(text);
+                    int x = result.evaluate(0);
+                    text = Integer.toString(x);
+                } catch (MyException e) {
+                    String exceptionText = e.text;
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MyActivity.this);
+                    // set title
+                    alertDialogBuilder.setTitle("Something wrong :(");
+
+                    // set dialog message
+                    alertDialogBuilder
+                            .setMessage("Click yes to exit!")
+                            .setCancelable(false)
+                            .setTitle("Что-то пошло не так :(")
+                            .setMessage(exceptionText)
+                            .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    //
+                                }
+                            });
+                    // create alert dialog
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+
+                    // show it
+                    alertDialog.show();
+                } catch (ArithmeticException e) {
+                    text = "wrong";
+                }
                 textView.setText(text);
             }
         });
@@ -111,3 +142,5 @@ public class MyActivity extends Activity implements View.OnClickListener {
         textView.setText(text);
     }
 }
+
+
