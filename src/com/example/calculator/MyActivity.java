@@ -2,17 +2,21 @@ package com.example.calculator;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 
 public class MyActivity extends Activity implements View.OnClickListener {
-    public static String expr = "";
+
+    String expr = "";
     /**
      * Called when the activity is first created.
      */
@@ -20,7 +24,6 @@ public class MyActivity extends Activity implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        System.out.println("123");
 
         TextView textView = (TextView)findViewById(R.id.textView);
 
@@ -140,6 +143,20 @@ public class MyActivity extends Activity implements View.OnClickListener {
         Button button = (Button)v;
         text += button.getText().toString();
         textView.setText(text);
+    }
+
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        TextView textView = (TextView)findViewById(R.id.textView);
+        String text = textView.getText().toString();
+        outState.putString("value", text);
+    }
+
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        expr = savedInstanceState.getString("value");
+        TextView textView = (TextView)findViewById(R.id.textView);
+        textView.setText(expr);
     }
 }
 
