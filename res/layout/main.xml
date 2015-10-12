@@ -110,7 +110,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Калькулятор  \n v0.0.1 \n by Dan Yakushev (c) 2015"
+                    android:text="Калькулятор  \n v1.0.1 \n by Dan Yakushev (c) 2015"
                     android:id="@+id/textView2" android:layout_below="@+id/linearLayout4"
                     android:layout_alignParentLeft="true" android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"/>

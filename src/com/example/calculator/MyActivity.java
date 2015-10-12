@@ -1,6 +1,7 @@
 package com.example.calculator;
 
 import android.app.Activity;
+import android.view.MotionEvent;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.content.Context;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import org.w3c.dom.Text;
+
 
 import java.io.IOException;
 
