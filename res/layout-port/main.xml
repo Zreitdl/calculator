@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+                android:id="@+id/RelativeLayout" android:clickable="false">
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+            >
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout" android:layout_above="@+id/linearLayout2"
+                android:layout_alignParentLeft="true">
+            <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="("
+                    android:id="@+id/buttonLeftbracket" android:layout_weight="1" android:textSize="30sp"/>
+            <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text=")"
+                    android:id="@+id/buttonRightbracket" android:layout_weight="1" android:textSize="30sp"/>
+            <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="&lt;-"
+                    android:id="@+id/buttonBackspace" android:textSize="30sp" android:layout_weight="1"/>
+            <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="clear"
+                    android:id="@+id/buttonClear" android:textSize="30sp" android:layout_weight="1"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout2"
+                android:layout_above="@+id/linearLayout3" android:layout_alignParentLeft="true">
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:id="@+id/buttonOne" android:layout_weight="1" android:textSize="30sp"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    android:id="@+id/buttonTwo" android:layout_weight="1" android:textSize="30sp"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3"
+                    android:id="@+id/buttonThree" android:layout_weight="1" android:textSize="30sp"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:id="@+id/buttonPlus" android:layout_weight="1" android:textSize="30sp"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/linearLayout3" android:layout_above="@+id/linearLayout4"
+                      android:layout_alignParentLeft="true">
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="4"
+                    android:id="@+id/buttonFour" android:layout_weight="1" android:textSize="30sp"/>
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5"
+                    android:id="@+id/buttonFive" android:layout_weight="1" android:textSize="30sp"/>
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="6"
+                    android:id="@+id/buttonSix" android:layout_weight="1" android:textSize="30sp"/>
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-"
+                    android:id="@+id/buttonMinus" android:layout_weight="1" android:textSize="30sp"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/linearLayout4" android:layout_above="@+id/linearLayout5"
+                      android:layout_alignParentLeft="true">
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="7"
+                    android:id="@+id/buttonSeven" android:layout_weight="1" android:textSize="30sp"/>
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8"
+                    android:id="@+id/buttonEight" android:layout_weight="1" android:textSize="30sp"/>
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="9"
+                    android:id="@+id/buttonNine" android:layout_weight="1" android:textSize="30sp"/>
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="*"
+                    android:id="@+id/buttonMultiply" android:layout_weight="1" android:textSize="30sp"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout5" android:layout_above="@+id/linearLayout6"
+                android:layout_alignParentLeft="true">
+            <Button android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="0"
+                    android:id="@+id/buttonZero" android:layout_weight="1" android:textSize="30sp"/>
+            <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="/"
+                    android:id="@+id/buttonDivide" android:layout_weight="3" android:textSize="30sp"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true" android:id="@+id/linearLayout6">
+            <Space
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"/>
+            <Button android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="="
+                    android:id="@+id/buttonEquals" android:textSize="30sp" android:layout_weight="3"/>
+        </LinearLayout>
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:orientation="vertical"
+                      android:layout_width="fill_parent"
+                      android:layout_height="fill_parent"
+                      android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                      android:layout_alignParentRight="true" android:layout_above="@+id/linearLayout"
+                      android:gravity="bottom">
+                <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="fill_parent"
+                        android:scrollbars = "vertical"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1.0" android:gravity="bottom|right" android:textSize="30sp"/>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

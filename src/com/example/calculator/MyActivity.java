@@ -1,6 +1,7 @@
 package com.example.calculator;
 
 import android.app.Activity;
+import android.text.method.ScrollingMovementMethod;
 import android.view.MotionEvent;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
@@ -28,6 +29,7 @@ public class MyActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.main);
 
         TextView textView = (TextView)findViewById(R.id.textView);
+        textView.setMovementMethod(new ScrollingMovementMethod());
 
         //buttons Numbers
         Button buttonOne = (Button)findViewById(R.id.buttonOne);
@@ -49,7 +51,6 @@ public class MyActivity extends Activity implements View.OnClickListener {
         Button buttonEquals = (Button)findViewById(R.id.buttonEquals);
         Button buttonLeftbracket = (Button)findViewById(R.id.buttonLeftbracket);
         Button buttonRightbracket = (Button)findViewById(R.id.buttonRightbracket);
-        Button buttonPoint = (Button)findViewById(R.id.buttonPoint);
 
         //other buttons
         Button buttonClear = (Button)findViewById(R.id.buttonClear);
@@ -75,13 +76,12 @@ public class MyActivity extends Activity implements View.OnClickListener {
         buttonMultiply.setOnClickListener(this);
         buttonLeftbracket.setOnClickListener(this);
         buttonRightbracket.setOnClickListener(this);
-        buttonPoint.setOnClickListener(this);
 
         buttonBackspace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 TextView textView = (TextView)findViewById(R.id.textView);
-                String text = (String)textView.getText();
+                String text = (String)textView.getText().toString();
                 if (text != null && !text.equals("")) {
                     text = text.substring(0,text.length() - 1);
                 }
@@ -93,7 +93,7 @@ public class MyActivity extends Activity implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 TextView textView = (TextView)findViewById(R.id.textView);
-                textView.setText("");
+                textView.setText(" ");
             }
         });
 
@@ -102,7 +102,7 @@ public class MyActivity extends Activity implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 TextView textView = (TextView)findViewById(R.id.textView);
-                String text = (String)textView.getText();
+                String text = (String)textView.getText().toString();
                 CheckedParser parser = new CheckedParser();
                 try {
                     Actions result = parser.parse(text);
@@ -130,8 +130,6 @@ public class MyActivity extends Activity implements View.OnClickListener {
 
                     // show it
                     alertDialog.show();
-                } catch (ArithmeticException e) {
-                    text = "wrong";
                 }
                 textView.setText(text);
             }
@@ -161,5 +159,3 @@ public class MyActivity extends Activity implements View.OnClickListener {
         textView.setText(expr);
     }
 }
-
-
