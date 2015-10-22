@@ -103,12 +103,12 @@ public class MyActivity extends Activity implements View.OnClickListener {
             public void onClick(View v) {
                 TextView textView = (TextView)findViewById(R.id.textView);
                 String text = (String)textView.getText().toString();
-                CheckedParser parser = new CheckedParser();
+                com.example.calculator.CheckedParser parser = new com.example.calculator.CheckedParser();
                 try {
-                    Actions result = parser.parse(text);
+                    com.example.calculator.Actions result = parser.parse(text);
                     int x = result.evaluate(0);
                     text = Integer.toString(x);
-                } catch (MyException e) {
+                } catch (com.example.calculator.MyException e) {
                     String exceptionText = e.text;
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MyActivity.this);
                     // set title
