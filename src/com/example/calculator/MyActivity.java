@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import org.w3c.dom.Text;
 
-
 import java.io.IOException;
 
 public class MyActivity extends Activity implements View.OnClickListener {
@@ -82,10 +81,13 @@ public class MyActivity extends Activity implements View.OnClickListener {
             public void onClick(View v) {
                 TextView textView = (TextView)findViewById(R.id.textView);
                 String text = (String)textView.getText().toString();
-                if (text != null && !text.equals("")) {
+                if (text.length() == 1) {
+                    textView.setText(" ");
+                } else if (!text.equals("")) {
                     text = text.substring(0,text.length() - 1);
+                    textView.setText(text);
                 }
-                textView.setText(text);
+
             }
         });
 
