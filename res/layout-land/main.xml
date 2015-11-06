@@ -93,13 +93,13 @@
             <Button
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="clear"
+                    android:text="C"
                     android:id="@+id/buttonClear" android:layout_weight="1" android:textSize="20sp"/>
             <Button
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="&lt;-"
-                    android:id="@+id/buttonBackspace" android:layout_weight="1" android:textSize="20sp"/>
+                    android:id="@+id/buttonBackspace" android:layout_weight="1" android:textSize="20sp"
+                    android:text="&lt;-"/>
         </LinearLayout>
         <TextView
                 android:layout_width="fill_parent"
